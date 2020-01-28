@@ -9,7 +9,7 @@ const tourSchema = mongoose.Schema({
     unique: true,
     trim: true,
     maxlength: [40, 'Tour must be less than 40 characters long'],
-    minlength: [10, 'Tour must be atleast 10 characters long'],
+    minlength: [10, 'Tour must be atleast 10 characters long']
   },
   slug: String,
   duration: {
@@ -101,7 +101,7 @@ tourSchema.pre(/^find/, function(next) {
 
 tourSchema.post(/^find/, function(docs, next) {
   //here we can access  the document as query alredy fired up.
-  console.log(`This query took ${Date.now() - this.start} milliseconds`);
+  // console.log(`This query took ${Date.now() - this.start} milliseconds`);
   next();
 });
 //Model

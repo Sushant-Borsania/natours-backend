@@ -4,7 +4,6 @@ const mongoose = require('mongoose');
 dotenv.config({ path: './config.env' });
 const app = require('./app');
 
-
 //Adding port to access the app
 const { PORT } = process.env;
 
@@ -13,6 +12,7 @@ const DB = process.env.DATABASE.replace(
   '<PASSWORD>',
   process.env.DATABASE_PASSWORD
 );
+
 //connect method returns the promise
 mongoose
   .connect(DB, {
