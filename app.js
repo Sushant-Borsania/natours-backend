@@ -18,6 +18,7 @@ app.use(express.static(`${__dirname}/public`));
 //Routes
 app.use('/api/v1/tours', tourRouter);
 app.use('/api/v1/users', userRouter);
+
 //catch all route
 app.all('*', (req, res, next) => {
   // res.status(404).json({
@@ -29,10 +30,12 @@ app.all('*', (req, res, next) => {
   // err.status = 'fail';
   // err.statusCode = 404;
 
+  //Whenever there is parameters defined in next function means it is an error and it will find the error handling
+  //middleware leaving all others.
   next(new AppError('Could not find the route', 404));
 });
 
-//Creating middleware for error handling▼
+//Creating middleware for error handling ▼
 app.use(globalErrorHandler);
 // console.log(process.env);
 module.exports = app;
